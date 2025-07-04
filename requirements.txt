@@ -1,7 +1,9 @@
+pandas
 ccxt
 ta
 xgboost
-pandas
-flask
+scikit-learn
+imbalanced-learn
 joblib
+flask
 pytz
