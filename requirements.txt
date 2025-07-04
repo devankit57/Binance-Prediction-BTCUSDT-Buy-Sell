@@ -1,6 +1,7 @@
-Flask
-pandas
 ccxt
 ta
+xgboost
+pandas
+flask
 joblib
 pytz
