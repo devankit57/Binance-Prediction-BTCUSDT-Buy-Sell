@@ -1,0 +1,9 @@
+services:
+  - type: web
+    name: btc-predictor
+    runtime: python
+    buildCommand: ""
+    startCommand: python app.py
+    envVars:
+      - key: PYTHONUNBUFFERED
+        value: "1"
