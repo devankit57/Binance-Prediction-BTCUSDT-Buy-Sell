@@ -1,9 +1,8 @@
+Flask
 pandas
-ccxt
-ta
-xgboost
-scikit-learn
-imbalanced-learn
+numpy
 joblib
-flask
+ccxt
 pytz
+ta
+scikit-learn
