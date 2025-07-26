@@ -84,7 +84,9 @@ def make_live_prediction():
     return {
         "signal": signal,
         "confidence": round(confidence, 2),
-        "timestamp": timestamp
+        "timestamp": timestamp,
+        "current_price": float(df["Close"].iloc[-1]),
+        "timeframe": TIMEFRAME
     }
 
 # ========== Flask App ==========
