@@ -13,7 +13,7 @@ from ta.volume import on_balance_volume              # type: ignore
 
 # ========== Constants ==========
 MODEL_PATH = "new_model.joblib"
-TIMEFRAME = "5m"
+TIMEFRAME = "15m"  # Changed from 5m to 15m
 SYMBOL = "BTC/USDT"
 FEATURE_COLUMNS = [
     "ret_1", "ret_3", "ret_6", "ret_12",
@@ -80,13 +80,17 @@ def make_live_prediction():
     confidence = float(model.predict_proba(X_latest)[0][prediction])
     signal = "BUY 🟢" if prediction == 1 else "SELL 🔴"
     timestamp = datetime.now(india_tz).strftime("%Y-%m-%d %H:%M:%S")
+    
+    # Get the timestamp of the last candle
+    last_candle_time = df["Datetime"].iloc[-1].strftime("%Y-%m-%d %H:%M:%S")
 
     return {
         "signal": signal,
         "confidence": round(confidence, 2),
         "timestamp": timestamp,
         "current_price": float(df["Close"].iloc[-1]),
-        "timeframe": TIMEFRAME
+        "timeframe": TIMEFRAME,
+        "last_candle_time": last_candle_time  # Added the timestamp of the last candle used for prediction
     }
 
 # ========== Flask App ==========
